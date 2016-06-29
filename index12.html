@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>example</title>
+    <script src="js/jQuery-2.1.4.min.js" type="text/javascript"></script>
+    <script src="js/handlebars-jquery.js" type="text/javascript"></script>
+    <script src="js/handlebars.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <script id="flowerTmpl" type="text/x-handlebars-template">
+        {{#each flowers}}
+        <div class="dcell">
+            <img src="images/{{product}}.png" />
+            <label for="{{product}}">{{name}}:</label>
+            <input name="{{product}}" data-price="{{price}}" data-stock="{{stock}}" value="{{#if stock}}1{{else}}0{{/if}}" required />
+        </div>
+        {{/each}}
+    </script>
+    <script type="text/javascript">
+        /*$(document).ready(function(){ //12-7
+         var data={
+         flowers:[
+         {name:'aster',product:'aster',stock:'10',price:2.99} ,
+         {name:'daffodil',product:'daffodil',stock:'12',price:1.99} ,
+         {name:'rose',product:'rose',stock:'2',price:4.99} ,
+         {name:'peony',product:'peony',stock:'0',price:1.50} ,
+         {name:'primula',product:'primula',stock:'1',price:3.12} ,
+         {name:'snowdrop',product:'snowdrop',stock:'15',price:0.99}
+         ]
+         };
+         var template=$("#flowerTmpl").template(data).filter("*").slice(0,3).appendTo("#row1").end().end().slice(3).appendTo("#row2");
+         for (var i=0;i<data.flowers.length;i++){
+         if(data.flowers[i].stock==0){
+         data.flowers[i].stock=null;
+         }
+         }
+         });*/
+
+        /*$(document).ready(function(){  //12-11
+         var data={
+         flowers:[
+         {name:'aster',product:'aster',stock:'10',price:2.99} ,
+         {name:'daffodil',product:'daffodil',stock:'12',price:1.99} ,
+         {name:'rose',product:'rose',stock:'2',price:4.99} ,
+         {name:'peony',product:'peony',stock:'0',price:1.50} ,
+         {name:'primula',product:'primula',stock:'1',price:3.12} ,
+         {name:'snowdrop',product:'snowdrop',stock:'15',price:0.99}
+         ]
+         };
+
+         for (var i=0;i<data.flowers.length;i++){
+         if(data.flowers[i].stock==0){
+         data.flowers[i].stock=null;
+         }
+         }
+
+         //var template=$("#flowerTmpl").template(data).filter("*").slice(0,3).appendTo("#row1").end().end().slice(3).appendTo("#row2");
+         var tElem=$("#flowerTmpl");
+         tElem.template({flowers:data.flowers.slice(0,3)}).appendTo("#row1");
+         tElem.template({flowers:data.flowers.slice(3)}).appendTo("#row2");
+         });*/
+        $(document).ready(function(){  //12-11
+            var data={
+                flowers:[
+                    {name:'aster',product:'aster',stock:'10',price:2.99} ,
+                    {name:'daffodil',product:'daffodil',stock:'12',price:1.99} ,
+                    {name:'rose',product:'rose',stock:'2',price:4.99} ,
+                    {name:'peony',product:'peony',stock:'0',price:1.50} ,
+                    {name:'primula',product:'primula',stock:'1',price:3.12} ,
+                    {name:'snowdrop',product:'snowdrop',stock:'15',price:0.99}
+                ]
+            };
+
+            for (var i=0;i<data.flowers.length;i++){
+                if(data.flowers[i].stock==0){
+                    data.flowers[i].stock=null;
+                }
+            }
+
+            //var template=$("#flowerTmpl").template(data).filter("*").slice(0,3).appendTo("#row1").end().end().slice(3).appendTo("#row2");
+            var tElem=$("#flowerTmpl");
+            tElem.template({flowers:data.flowers.slice(0,3)}).appendTo("#row1");
+            tElem.template({flowers:data.flowers.slice(3)}).appendTo("#row2");
+        });
+    </script>
+</head>
+
+<body>
+<h1>my jquery</h1>
+
+<form method="post">
+    <div id="oblock">
+        <div class="dtable">
+            <div id="row1" class="drow">
+
+            </div>
+            <div id="row2" class="drow">
+
+            </div>
+        </div>
+    </div>
+    <div id="buttonDiv">
+        <button type="submit">place order</button>
+    </div>
+</form>
+</body>
+</html>
